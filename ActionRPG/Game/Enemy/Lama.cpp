@@ -405,12 +405,12 @@ namespace Game {
 					mBody->changeAttackFrame();
 					mAttackTrout = new AttackTrout(mBody->mtX() + mBody->getDirectionX(), mBody->mtY() + mBody->getDirectionY(), *field);
 				}
-				if (mAttackTrout) {
-					mAttackTrout->update();
-				}
 				if (mBody->getHP() <= 0) {
 					enemyDelete(field);
 				}
+			}
+			if (mAttackTrout) {
+				mAttackTrout->update();
 			}
 		}
 		void Lama::drawBody(const Field& field) const {

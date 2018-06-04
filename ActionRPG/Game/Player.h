@@ -42,7 +42,7 @@ namespace Game {
 			Image * mImage;
 			int mLaserCount;
 			bool laserCollision;
-			const int laserDamage = 30;
+			const int laserDamage = 40;
 			int laserCollisionCount;
 			const int playerX, playerY;
 
@@ -71,7 +71,7 @@ namespace Game {
 			Image* mImage2;
 			int mLaser2Count;
 			bool laser2Collision;
-			const int laser2Damage = 30;
+			const int laser2Damage = 40;
 			int laser2CollisionCount;
 			const int playerX, playerY;
 
@@ -110,7 +110,7 @@ namespace Game {
 			int firstAttackInterval;
 			const int firstAttackIntervalMax = 30;
 
-			const int mCanonDamage = 20;
+			const int mCanonDamage = 30;
 
 			const GameParent::DrawAttackTiming mDrawAttackTiming = GameParent::BEFORE;
 		};
@@ -152,7 +152,7 @@ namespace Game {
 
 			bool isChangeArea;
 
-			const int robDamage = 30;
+			const int robDamage = 50;
 
 			const GameParent::DrawAttackTiming mDrawAttackTiming = GameParent::DrawAttackTiming::AFTER;
 

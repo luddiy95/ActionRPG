@@ -260,12 +260,12 @@ namespace Game {
 					mBody->changeAttackFrame();
 					mAttackTrout = new AttackTrout(mBody->mtX() - 1, mBody->mY(), *field);
 				}
-				if (mAttackTrout) {
-					mAttackTrout->update();
-				}
 				if (mBody->getHP() <= 0) {
 					enemyDelete(field);
 				}
+			}
+			if (mAttackTrout) {
+				mAttackTrout->update();
 			}
 		}
 		void Turtle::drawBody(const Field& field) const {

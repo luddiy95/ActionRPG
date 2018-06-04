@@ -23,7 +23,7 @@ namespace {
 
 namespace Game {
 	namespace Enemy {
-		Bear::Body::Body(int x, int y, Field* field) : mx(x), my(y), mtx(x), mty(y), HP(120),
+		Bear::Body::Body(int x, int y, Field* field) : mx(x), my(y), mtx(x), mty(y), HP(80),
 			nextmdx(0), nextmdy(0), moveDistanceX(0), moveDistanceY(0), dx(0), dy(0),
 			mImageStatus(0), mDirectionX(NONEX), mDirectionY(FRONT), mImageStatusCount(0), mFirstFrame(true),
 			mIntervalCount(0), mAttack(false), afterAttack(false), isAttackFrame(false), mImage(0) {
