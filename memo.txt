@@ -1,0 +1,79 @@
+
+・フィールドは左上が原点でいい気がする
+
+☆mLines、mTroutのメンバは原点から見た座標
+Fieldのdrawで原点をmTroutのdrawに渡し本来の位置に描画
+
+☆テクスチャサイズが縦と横で同じじゃないと等倍されない？
+
+・.txtデータをFileで読んだが改行に2char分使われてる？
+
+・trout.ddsは32 * 18の等倍で用意しないとおかしくなる(32 * 36はダメ)
+
+・joystickのanalog(0)が小さい→左が押された、大きい→右が押された
+analog(1)が小さい→上が押された、大きい→下が押された
+横：0, 43170(完全な値はわからない), 65535
+縦：0, 32767(完全な値はわからない), 65535
+
+・joystickのLはjoystick.isOn(6)でRはjoystick.isOn(7)
+
+・L押しながらだと体の向きを変えられる
+
+・画面は320 * 240(4:3)用意する画像としては160 * 120
+
+・敵(bird)4 * 3マス
+画像は192 * 144で一体は48 * 36
+
+・座標がintの場合はマスの座標、doubleの場合は本体の真ん中の座標
+
+・
+for (int i = 0; i < tn; i++) {
+				if (mBeams[i]) {
+					if (mBeams[i]->vanish()) {
+						for (int j = i; j < maxBeamNumber - 1; j++) {
+							mBeams[j] = mBeams[j + 1];←☆
+						}
+						SAFE_DELETE(mBeams[mBeamNumber - 1]);
+						--mBeamNumber;
+					}
+				}
+}
+☆でmBeams[i]が結局mBeams[maxBeamNumber]を指してしまう
+
+・デバッグ画面の幅は800px、高さは600px
+
+・selectの幅は160px、高さも160px
+
+・selectが変更するのがselectTarotNumでplayerが変更するのがheadIndex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

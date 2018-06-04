@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="File.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Game\Field.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix23.cpp" />
+    <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Game\GameParent.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Status.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\Bird.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\Turtle.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\Lama.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\Bear.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="Game\Tarot.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Pad.cpp" />
+    <ClCompile Include="Sequence\Title.cpp">
+      <Filter>Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence\Parent.cpp">
+      <Filter>Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence\StageSelect.cpp">
+      <Filter>Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence\GameOver.cpp">
+      <Filter>Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence\GameClear.cpp">
+      <Filter>Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence\Explanation.cpp">
+      <Filter>Sequence</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Image.h" />
+    <ClInclude Include="File.h" />
+    <ClInclude Include="Game\Field.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix23.h" />
+    <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Array2D.h" />
+    <ClInclude Include="Game\GameParent.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Status.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\Bird.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\Enemy.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\Turtle.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\Lama.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\Bear.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="Game\Tarot.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Pad.h" />
+    <ClInclude Include="Sequence\Title.h">
+      <Filter>Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Sequence\Parent.h">
+      <Filter>Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Sequence\StageSelect.h">
+      <Filter>Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Sequence\GameOver.h">
+      <Filter>Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Sequence\GameClear.h">
+      <Filter>Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Sequence\Explanation.h">
+      <Filter>Sequence</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Game">
+      <UniqueIdentifier>{6d934b5e-9a86-43e9-984e-8ec7c14c74b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Enemy">
+      <UniqueIdentifier>{35033d97-6785-480b-89d1-ab1f54efd3b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sequence">
+      <UniqueIdentifier>{b2e99b86-0ae0-45f2-b496-30e417e31bb0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
