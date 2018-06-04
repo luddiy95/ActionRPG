@@ -15,20 +15,23 @@ namespace Game {
 		File* stageFile = new File(stagedata);
 		SAFE_DELETE(mField);
 		mField = new Field(50.0, 75.0, *stageFile);
-		for (int y = 0; y < gLayerNumber; y++) {
-			for (int x = 0; x < gLineNumber; x++) {
-				switch (stageFile->data()[y * (gLineNumber + 1) + x]) {
-				case 'p': mPlayer = new Player(x, y, mField); break;
-				case 'b': mEnemies[mEnemyNumber] = new Enemy::Bird(x, y, mEnemyNumber, mField);
-					++mEnemyNumber; break;
-				case 't': mEnemies[mEnemyNumber] = new Enemy::Turtle(x, y, mEnemyNumber, mField);
-					++mEnemyNumber; break;
-				case 'l': mEnemies[mEnemyNumber] = new Enemy::Lama(x, y, mEnemyNumber, mField);
-					++mEnemyNumber; break;
-				case 'r': mEnemies[mEnemyNumber] = new Enemy::Bear(x, y, mEnemyNumber, mField);
-					++mEnemyNumber; break;
-				}
+		int x = 0, y = 0;
+		int i = 0;
+		while ('e' != stageFile->data()[i]) {
+			switch (stageFile->data()[i]) {
+			case '2': case '0': case '1': ++x; break;
+			case 'p': mPlayer = new Player(x, y, mField); ++x; break;
+			case 'b': mEnemies[mEnemyNumber] = new Enemy::Bird(x, y, mEnemyNumber, mField);
+				++mEnemyNumber; ++x; break;
+			case 't': mEnemies[mEnemyNumber] = new Enemy::Turtle(x, y, mEnemyNumber, mField);
+				++mEnemyNumber; ++x; break;
+			case 'l': mEnemies[mEnemyNumber] = new Enemy::Lama(x, y, mEnemyNumber, mField);
+				++mEnemyNumber; ++x; break;
+			case 'r': mEnemies[mEnemyNumber] = new Enemy::Bear(x, y, mEnemyNumber, mField);
+				++mEnemyNumber; ++x; break;
+			case 'n': ++y; x = 0; break;
 			}
+			++i;
 		}
 		mStatus = new Status(*mPlayer);
 

@@ -124,14 +124,17 @@ namespace Game {
 				mCharactors(x, y).setCharactor(Trout::NONE);
 			}
 		}
-		for (int y = 0; y < gLayerNumber; y++) {
-			for (int x = 0; x < gLineNumber; x++) {
-				switch (stageFile.data()[y * (gLineNumber + 1) + x]) {
-				case '2': mTrouts(x, y).initializeState(Trout::HOLE); break;
-				case '0': case 'p': mTrouts(x, y).initializeState(Trout::PLAYER_AREA); break;
-				case '1': case 'b': case 't': case 'l': case 'r': mTrouts(x, y).initializeState(Trout::ENEMY_AREA); break;
-				}
+
+		int x = 0, y = 0;
+		int i = 0;
+		while ('e' != stageFile.data()[i]) {
+			switch (stageFile.data()[i]) {
+			case '2': mTrouts(x, y).initializeState(Trout::HOLE); ++x; break;
+			case '0': case 'p': mTrouts(x, y).initializeState(Trout::PLAYER_AREA); ++x; break;
+			case '1': case 'b': case 't': case 'l': case 'r': mTrouts(x, y).initializeState(Trout::ENEMY_AREA); ++x; break;
+			case 'n': ++y; x = 0; break;
 			}
+			++i;
 		}
 
 		mImage = new Image("data/image/trout.dds");
