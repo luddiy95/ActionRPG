@@ -126,8 +126,8 @@ namespace Game {
 		}
 		for (int y = 0; y < gLayerNumber; y++) {
 			for (int x = 0; x < gLineNumber; x++) {
-				switch (stageFile.data()[y * (gLineNumber + 2) + x]) {
-				case ' ': mTrouts(x, y).initializeState(Trout::HOLE); break;
+				switch (stageFile.data()[y * (gLineNumber + 1) + x]) {
+				case '2': mTrouts(x, y).initializeState(Trout::HOLE); break;
 				case '0': case 'p': mTrouts(x, y).initializeState(Trout::PLAYER_AREA); break;
 				case '1': case 'b': case 't': case 'l': case 'r': mTrouts(x, y).initializeState(Trout::ENEMY_AREA); break;
 				}

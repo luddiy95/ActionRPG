@@ -17,7 +17,7 @@ namespace Game {
 		mField = new Field(50.0, 75.0, *stageFile);
 		for (int y = 0; y < gLayerNumber; y++) {
 			for (int x = 0; x < gLineNumber; x++) {
-				switch (stageFile->data()[y * (gLineNumber + 2) + x]) {
+				switch (stageFile->data()[y * (gLineNumber + 1) + x]) {
 				case 'p': mPlayer = new Player(x, y, mField); break;
 				case 'b': mEnemies[mEnemyNumber] = new Enemy::Bird(x, y, mEnemyNumber, mField);
 					++mEnemyNumber; break;
