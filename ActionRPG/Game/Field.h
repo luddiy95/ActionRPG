@@ -5,7 +5,6 @@
 
 class Vector2;
 class Image;
-class File;
 
 namespace GameLib {
 	class Texture;
@@ -64,11 +63,6 @@ namespace Game {
 			Charactor mCharactor;
 			Vector2* mCoordinate; //ƒ}ƒX‚ÌŽl‹÷‚ð‚Ü‚Æ‚ß‚½‚à‚Ì
 		};
-
-		static Field* instance();
-		static void create(double, double, const File&);
-		static void destroy();
-
 		void moveOrigin(double);
 		Vector2 getOrigin() const;
 
@@ -86,7 +80,7 @@ namespace Game {
 		Vector2* getTroutCoordinate(int, int) const;
 		double getLineX(int, double) const;
 
-		Field(double, double, const File&);
+		Field(double, double, const int);
 		~Field();
 	private:
 		//static Field* mInstance;

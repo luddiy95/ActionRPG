@@ -10,12 +10,12 @@ namespace Sequence {
 		StageSelect();
 		~StageSelect();
 		void update(Parent*);
-		const char* getStagedata() const;
+		int getStageNum() const;
 	private:
 		Image * mImage;
 		int cursorCount;
 		int mCursorPosition;
-		char* mStagedata;
+		int stageNum;
 	};
 }
 

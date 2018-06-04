@@ -6,7 +6,7 @@
 using namespace GameLib;
 
 namespace Sequence {
-	StageSelect::StageSelect() : cursorCount(0), mCursorPosition(0), mImage(0), mStagedata(0) {
+	StageSelect::StageSelect() : cursorCount(0), mCursorPosition(0), mImage(0), stageNum(0) {
 		mImage = new Image("data/image/background1.dds");
 	}
 	StageSelect::~StageSelect() {
@@ -31,20 +31,13 @@ namespace Sequence {
 			}
 		}
 		if (Pad::isTriggered(Pad::D)) {
-			char* stageArray[]{
-				"data/stagedata/stagedata0.txt",
-				"data/stagedata/stagedata1.txt",
-				"data/stagedata/stagedata2.txt",
-				"data/stagedata/stagedata3.txt",
-				"data/stagedata/stagedata4.txt"
-			};
 			if (mCursorPosition == 5) {
 				//random
 				int r = Framework::instance().getRandom(5);
-				mStagedata = stageArray[r];
+				stageNum = r;
 			}
 			else if (0 <= mCursorPosition && mCursorPosition <= 4) {
-				mStagedata = stageArray[mCursorPosition];
+				stageNum = mCursorPosition;
 			}
 			parent->moveTo(Parent::NEXT_GAME);
 		}
@@ -72,7 +65,7 @@ namespace Sequence {
 		}
 
 	}
-	const char* StageSelect::getStagedata() const {
-		return mStagedata;
+	int StageSelect::getStageNum() const {
+		return stageNum;
 	}
 }

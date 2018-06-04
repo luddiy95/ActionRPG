@@ -3,7 +3,6 @@
 #include "Vector2.h"
 #include "Matrix23.h"
 #include "Image.h"
-#include "File.h"
 #include "GameLib/Framework.h"
 #include "GameLib/Math.h"
 using namespace GameLib;
@@ -96,7 +95,7 @@ namespace Game {
 
 
 
-	Field::Field(double ox, double oy, const File& stageFile) : mLines(0), mOriginX(ox), mOriginY(oy), mImage(0){
+	Field::Field(double ox, double oy, const int n) : mLines(0), mOriginX(ox), mOriginY(oy), mImage(0){
 		mLines = new Line[gLineNumber + 1];
 		int maxN = gLineNumber / 2;
 		double delta = gFieldTheta / static_cast<double>(gLineNumber);
@@ -127,8 +126,8 @@ namespace Game {
 
 		int x = 0, y = 0;
 		int i = 0;
-		while ('e' != stageFile.data()[i]) {
-			switch (stageFile.data()[i]) {
+		while ('e' != gStageArray[n][i]) {
+			switch (gStageArray[n][i]) {
 			case '2': mTrouts(x, y).initializeState(Trout::HOLE); ++x; break;
 			case '0': case 'p': mTrouts(x, y).initializeState(Trout::PLAYER_AREA); ++x; break;
 			case '1': case 'b': case 't': case 'l': case 'r': mTrouts(x, y).initializeState(Trout::ENEMY_AREA); ++x; break;

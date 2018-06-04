@@ -20,6 +20,14 @@ namespace {
 	//敵のバランス
 	const double gEnemyDepth = 4.0 / 6.0;
 	const double gEnemyScale = 15.0 / 14.0;
+
+	char* gStageArray[]{
+		"0021011011n000000111tn00p1b211b1n000011r1l1n000000111rn000001l121e",
+		"00000011b1n00001l1111n000p0r1111n0000111121n00000t111rn0000000111e",
+		"0011111r11n000000011tn00p000b11ln0011l22111n0011111111n0000111t11e",
+		"000011r11rn00p1111b11n0000111111n1111111111n000011t111n000011111le",
+		"00000011lln0000l111l1n00000001lln0000021111n00p01111l1n000000111le"
+	};
 }
 
 namespace Sequence {
@@ -50,7 +58,7 @@ namespace Game {
 			BEFORE, //playerとenemyと同じタイミング(enemyとplayerの間)
 			AFTER //playerとenemyの次に描画
 		};
-		GameParent(const char*);
+		GameParent(const int);
 		~GameParent();
 		void update(Sequence::Parent*);
 	private:

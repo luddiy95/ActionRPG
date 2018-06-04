@@ -65,7 +65,7 @@ namespace Sequence {
 			break;
 		case NEXT_GAME:
 			ASSERT(!mTitle && mStageSelect && !mExplanation && !mGameOver && !mGameClear && !mGame);
-			mGame = new Game::GameParent(mStageSelect->getStagedata());
+			mGame = new Game::GameParent(mStageSelect->getStageNum());
 			SAFE_DELETE(mStageSelect);
 			break;
 		case NEXT_STAGESELECT:

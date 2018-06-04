@@ -3,7 +3,6 @@
 #include "Game/Player.h"
 #include "Game/Status.h"
 #include "Sequence/Parent.h"
-#include "File.h"
 #include "Game/Enemy/Enemy.h"
 #include "Game/Enemy/Bird.h"
 #include "Game/Enemy/Turtle.h"
@@ -11,14 +10,13 @@
 #include "Game/Enemy/Bear.h"
 
 namespace Game {
-	GameParent::GameParent(const char* stagedata) : mPlayer(0), mStatus(0), mEnemyNumber(0), mMode(SELECT) {
-		File* stageFile = new File(stagedata);
+	GameParent::GameParent(const int n) : mPlayer(0), mStatus(0), mEnemyNumber(0), mMode(SELECT) {
 		SAFE_DELETE(mField);
-		mField = new Field(50.0, 75.0, *stageFile);
+		mField = new Field(50.0, 75.0, n);
 		int x = 0, y = 0;
 		int i = 0;
-		while ('e' != stageFile->data()[i]) {
-			switch (stageFile->data()[i]) {
+		while ('e' != gStageArray[n][i]) {
+			switch (gStageArray[n][i]) {
 			case '2': case '0': case '1': ++x; break;
 			case 'p': mPlayer = new Player(x, y, mField); ++x; break;
 			case 'b': mEnemies[mEnemyNumber] = new Enemy::Bird(x, y, mEnemyNumber, mField);
@@ -34,8 +32,6 @@ namespace Game {
 			++i;
 		}
 		mStatus = new Status(*mPlayer);
-
-		SAFE_DELETE(stageFile);
 	}
 	GameParent::~GameParent() {
 		SAFE_DELETE(mPlayer);
