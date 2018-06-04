@@ -19,6 +19,7 @@ namespace Game {
 	namespace Enemy {
 		Bird::Body::Body(int x, int y, Field* field) : mx(x), my(y), mImageStatus(0), mImageStatusCount(0),
 			mMoveCount(0), mAttackCount(0), mBeamCount(0), isAttackFrame(false), HP(40){
+			SAFE_DELETE(mImage);
 			mImage = new Image("data/image/birdBody.dds");
 			field->setCharactor(x, y, Field::Trout::ENEMY_BIRD);
 		}
@@ -166,7 +167,7 @@ namespace Game {
 			mdy = troutHeight * gEnemyDepth / 2.0 + troutCoordinate[0].y;
 			double troutWidth = field.getLineX(x + 1, mdy) - field.getLineX(x, mdy);
 			mdx = field.getLineX(x, mdy);
-
+			SAFE_DELETE(mImage);
 			mImage = new Image("data/image/birdAttack.dds");
 		}
 		Bird::Beam::~Beam() {
@@ -211,6 +212,7 @@ namespace Game {
 
 
 		Bird::Bird(int x, int y, int n, Field* field) : mBody(0), index(n) {
+			SAFE_DELETE(mBody);
 			mBody = new Body(x, y, field);
 		}
 		Bird::~Bird() {

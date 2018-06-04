@@ -34,10 +34,14 @@ namespace Game {
 		mDisplayWidth = gPlayerWidth * pow(gPlayerScale, static_cast<double>(my));
 		mdx = tx;
 
+		SAFE_DELETE(mImage);
 		mImage = new Image("data/image/player1.dds");
 		mDirection = RIGHT;
 		field->setCharactor(x, y, Field::Trout::PLAYER);
 
+		SAFE_DELETE(mAttack);
+
+		SAFE_DELETE(mDeck);
 		//デッキ初期化(いずれ探索シーケンスのplayerに移動)
 		mDeck = new Tarot[maxTarotNum];
 		
@@ -276,6 +280,7 @@ namespace Game {
 		for (int i = 0; i < gLayerNumber * gLineNumber; i++) {
 			collisionIndex[i] = -1;
 		}
+		SAFE_DELETE(mImage);
 		mImage = new Image("data/image/playerLaser.dds");
 	}
 	Player::attackLaser::~attackLaser() {
@@ -373,6 +378,8 @@ namespace Game {
 		for (int i = 0; i < gLayerNumber * gLineNumber; i++) {
 			collisionIndex2[i] = -1;
 		}
+		SAFE_DELETE(mImage1);
+		SAFE_DELETE(mImage2);
 		mImage1 = new Image("data/image/playerLaser.dds");
 		mImage2 = new Image("data/image/playerLaserVertical.dds");
 	}
@@ -518,6 +525,7 @@ namespace Game {
 			break;
 		}
 
+		SAFE_DELETE(mImage);
 		mImage = new Image("data/image/playerCanon.dds");
 	}
 	Player::Canon::~Canon() {
@@ -709,7 +717,8 @@ namespace Game {
 			m3 = field.getTroutCoordinate(robX, robY)[3];
 			mTranslation.setVector(0.0, -mFirstDistance);
 		}
-		
+
+		SAFE_DELETE(mImage);
 		mImage = new Image("data/image/attackTrout.dds");
 	}
 	Player::Rob::~Rob() {

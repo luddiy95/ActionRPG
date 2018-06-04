@@ -18,18 +18,23 @@ namespace Game {
 		for (int y = 0; y < gLayerNumber; y++) {
 			for (int x = 0; x < gLineNumber; x++) {
 				switch (stageFile->data()[y * (gLineNumber + 1) + x]) {
-				case 'p': mPlayer = new Player(x, y, mField); break;
-				case 'b': mEnemies[mEnemyNumber] = new Enemy::Bird(x, y, mEnemyNumber, mField);
+				case 'p': SAFE_DELETE(mPlayer);  mPlayer = new Player(x, y, mField); break;
+				case 'b': SAFE_DELETE(mEnemies[mEnemyNumber]);
+					mEnemies[mEnemyNumber] = new Enemy::Bird(x, y, mEnemyNumber, mField);
 					++mEnemyNumber; break;
-				case 't': mEnemies[mEnemyNumber] = new Enemy::Turtle(x, y, mEnemyNumber, mField);
+				case 't': SAFE_DELETE(mEnemies[mEnemyNumber]);
+					mEnemies[mEnemyNumber] = new Enemy::Turtle(x, y, mEnemyNumber, mField);
 					++mEnemyNumber; break;
-				case 'l': mEnemies[mEnemyNumber] = new Enemy::Lama(x, y, mEnemyNumber, mField);
+				case 'l': SAFE_DELETE(mEnemies[mEnemyNumber]); 
+					mEnemies[mEnemyNumber] = new Enemy::Lama(x, y, mEnemyNumber, mField);
 					++mEnemyNumber; break;
-				case 'r': mEnemies[mEnemyNumber] = new Enemy::Bear(x, y, mEnemyNumber, mField);
+				case 'r': SAFE_DELETE(mEnemies[mEnemyNumber]); 
+					mEnemies[mEnemyNumber] = new Enemy::Bear(x, y, mEnemyNumber, mField);
 					++mEnemyNumber; break;
 				}
 			}
 		}
+		SAFE_DELETE(mStatus);
 		mStatus = new Status(*mPlayer);
 
 		SAFE_DELETE(stageFile);

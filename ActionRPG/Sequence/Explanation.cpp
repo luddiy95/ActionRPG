@@ -9,6 +9,10 @@ using namespace GameLib;
 namespace Sequence {
 	Explanation::Explanation() : mImage1(0), mImage2(0), mImage3(0), mImage4(0), page(1) {
 		//mImage‚Ìnew
+		SAFE_DELETE(mImage1);
+		SAFE_DELETE(mImage2);
+		SAFE_DELETE(mImage3);
+		SAFE_DELETE(mImage4);
 		mImage1 = new Image("data/image/explanation1.dds");
 		mImage2 = new Image("data/image/explanation2.dds");
 		mImage3 = new Image("data/image/explanation3.dds");

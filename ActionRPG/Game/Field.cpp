@@ -97,6 +97,7 @@ namespace Game {
 
 
 	Field::Field(double ox, double oy, const File& stageFile) : mLines(0), mOriginX(ox), mOriginY(oy), mImage(0){
+		SAFE_DELETE(mLines);
 		mLines = new Line[gLineNumber + 1];
 		int maxN = gLineNumber / 2;
 		double delta = gFieldTheta / static_cast<double>(gLineNumber);
@@ -133,7 +134,7 @@ namespace Game {
 				}
 			}
 		}
-
+		SAFE_DELETE(mImage);
 		mImage = new Image("data/image/trout.dds");
 	}
 	Field::~Field() {

@@ -8,6 +8,7 @@ using namespace GameLib;
 
 namespace Sequence {
 	Title::Title() : cursorCount(0), mCursorPosition(0), mImage(0) {
+		SAFE_DELETE(mImage);
 		mImage = new Image("data/image/background1.dds");
 	}
 	Title::~Title() {

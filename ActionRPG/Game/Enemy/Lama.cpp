@@ -36,6 +36,7 @@ namespace Game {
 			double troutWidth = field->getLineX(mtx + 1, ty) - field->getLineX(mtx, ty);
 			mdx = field->getLineX(mtx, ty) + troutWidth / 2.0;
 			mdy = ty - displayHeight / 2.0;
+			SAFE_DELETE(mImage);
 			mImage = new Image("data/image/lamaBody.dds");
 		}
 		Lama::Body::~Body() {
@@ -326,6 +327,7 @@ namespace Game {
 			m2(field.getTroutCoordinate(x, y)[2]),
 			m3(field.getTroutCoordinate(x, y)[3]) {
 			mTranslation.setVector(0.0, -mFirstDistance);
+			SAFE_DELETE(mImage);
 			mImage = new Image("data/image/attackTrout.dds");
 		}
 		Lama::AttackTrout::~AttackTrout() {
@@ -366,10 +368,12 @@ namespace Game {
 
 
 		Lama::Lama(int x, int y, int n, Field* field) : mBody(0), mAttackTrout(0), index(n) {
+			SAFE_DELETE(mBody);
 			mBody = new Body(x, y, field);
 		}
 		Lama::~Lama() {
 			SAFE_DELETE(mBody);
+			SAFE_DELETE(mAttackTrout);
 		}
 		int Lama::bodyX() const {
 			return mBody->mX();
@@ -403,6 +407,7 @@ namespace Game {
 				mBody->update(player, field);
 				if (mBody->attackFrame() && !mAttackTrout) {
 					mBody->changeAttackFrame();
+					SAFE_DELETE(mAttackTrout);
 					mAttackTrout = new AttackTrout(mBody->mtX() + mBody->getDirectionX(), mBody->mtY() + mBody->getDirectionY(), *field);
 				}
 				if (mBody->getHP() <= 0) {

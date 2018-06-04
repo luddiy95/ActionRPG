@@ -7,6 +7,7 @@ using namespace GameLib;
 
 namespace Sequence {
 	StageSelect::StageSelect() : cursorCount(0), mCursorPosition(0), mImage(0), mStagedata(0) {
+		SAFE_DELETE(mImage);
 		mImage = new Image("data/image/background1.dds");
 	}
 	StageSelect::~StageSelect() {

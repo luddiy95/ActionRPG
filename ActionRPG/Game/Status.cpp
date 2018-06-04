@@ -13,6 +13,8 @@ using namespace std;
 namespace Game {
 	Status::Select::Select() : mCursor(0), tarotShadow(0), buttonCount(0),
 		tarotCursor(0) {
+		SAFE_DELETE(tarotShadow);
+		SAFE_DELETE(tarotCursor);
 		tarotShadow = new Image("data/image/shadow.dds");
 		tarotCursor = new Image("data/image/tarotCursor.dds");
 	}
@@ -93,6 +95,10 @@ namespace Game {
 
 	Status::Status(const Player& player) : playerHP(player.hp()),
 		mGauge(maxGauge), increaseCount(0), decreaseCount(0), lastGaugeFlash(true), mMode(SELECT){
+		SAFE_DELETE(Status1Image);
+		SAFE_DELETE(Gauge1Image);
+		SAFE_DELETE(Gauge2Image);
+		SAFE_DELETE(selectHead);
 		Status1Image = new Image("data/image/status0.dds");
 		Gauge1Image = new Image("data/image/gauge1.dds");
 		Gauge2Image = new Image("data/image/gauge2.dds");
@@ -104,6 +110,8 @@ namespace Game {
 		SAFE_DELETE(Status1Image);
 		SAFE_DELETE(Gauge1Image);
 		SAFE_DELETE(Gauge2Image);
+		SAFE_DELETE(selectHead);
+		SAFE_DELETE(mSelect);
 	}
 	void Status::update(Player* player) {
 		//ÉQÅ[ÉW

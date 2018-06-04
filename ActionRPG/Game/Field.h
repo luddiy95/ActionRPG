@@ -64,11 +64,6 @@ namespace Game {
 			Charactor mCharactor;
 			Vector2* mCoordinate; //ƒ}ƒX‚ÌŽl‹÷‚ð‚Ü‚Æ‚ß‚½‚à‚Ì
 		};
-
-		static Field* instance();
-		static void create(double, double, const File&);
-		static void destroy();
-
 		void moveOrigin(double);
 		Vector2 getOrigin() const;
 

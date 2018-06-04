@@ -37,6 +37,7 @@ namespace Game {
 			double troutWidth = field->getLineX(mtx + 1, ty) - field->getLineX(mtx, ty);
 			mdx = field->getLineX(mtx, ty) + troutWidth / 2.0;
 			mdy = ty - displayHeight / 2.0;
+			SAFE_DELETE(mImage);
 			mImage = new Image("data/image/bearBody.dds");
 		}
 		Bear::Body::~Body() {
@@ -246,6 +247,7 @@ namespace Game {
 
 
 		Bear::Sensor::Sensor(int x, int y, const Field& field) : mx(x), my(y), vanish(false), sensor(false), mSensorCount(0), mCount(0) {
+			SAFE_DELETE(mImage);
 			mImage = new Image("data/image/sensor1.dds");
 			
 			mdx = field.getTroutCoordinate(mx, my)[0].x;
@@ -308,6 +310,7 @@ namespace Game {
 
 
 		Bear::Laser::Laser(int x, int y, const Field& field) : mx(x), my(y), mLaserCount(0), laser(false), vanish(false) {
+			SAFE_DELETE(mImage);
 			mImage = new Image("data/image/laser.dds");
 
 			mdx = field.getTroutCoordinate(mx, my)[0].x;
@@ -364,10 +367,13 @@ namespace Game {
 
 		Bear::Bear(int x, int y, int n, Field* field) : mBody(0), mSensor(0), mLaser(0), mSensorCount(0),
 			laserVanishing(false), laserVanishingCount(0), index(n), deleted(false) {
+			SAFE_DELETE(mBody);
 			mBody = new Body(x, y, field);
 		}
 		Bear::~Bear() {
 			SAFE_DELETE(mBody);
+			SAFE_DELETE(mSensor);
+			SAFE_DELETE(mLaser);
 		}
 		int Bear::bodyX() const {
 			return mBody->mX();
@@ -404,6 +410,7 @@ namespace Game {
 					mBody->changeAttackFrame();
 					mBody->setDirectionX(Body::LEFT);
 					mBody->setDirectionY(Body::NONEY);
+					SAFE_DELETE(mSensor);
 					mSensor = new Sensor(mBody->mX(), mBody->mY(), *field);
 				}
 				if (mBody->getHP() <= 0) {
@@ -461,6 +468,7 @@ namespace Game {
 			if (mSensor && !mLaser) {
 				if (mSensor->isSensorOn()) {
 					if (player->mY() == mSensor->mY()) {
+						SAFE_DELETE(mLaser);
 						mLaser = new Laser(mSensor->mX(), mSensor->mY(), *field);
 						mSensor->Vanish();
 					}

@@ -5,8 +5,8 @@ using namespace GameLib;
 
 namespace Game {
 	Tarot::Tarot(): tarotImage(0), tarotColor(0) {
+		SAFE_DELETE(tarotColor);
 		tarotColor = new Image("data/image/tarotFigure.dds");
-
 	}
 	Tarot::~Tarot() {
 		SAFE_DELETE(tarotColor);
