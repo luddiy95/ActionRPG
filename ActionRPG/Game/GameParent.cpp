@@ -3,6 +3,7 @@
 #include "Game/Player.h"
 #include "Game/Status.h"
 #include "Sequence/Parent.h"
+#include "File.h"
 #include "Game/Enemy/Enemy.h"
 #include "Game/Enemy/Bird.h"
 #include "Game/Enemy/Turtle.h"
@@ -10,28 +11,28 @@
 #include "Game/Enemy/Bear.h"
 
 namespace Game {
-	GameParent::GameParent(const int n) : mPlayer(0), mStatus(0), mEnemyNumber(0), mMode(SELECT) {
+	GameParent::GameParent(const char* stagedata) : mPlayer(0), mStatus(0), mEnemyNumber(0), mMode(SELECT) {
+		File* stageFile = new File(stagedata);
 		SAFE_DELETE(mField);
-		mField = new Field(50.0, 75.0, n);
-		int x = 0, y = 0;
-		int i = 0;
-		while ('e' != gStageArray[n][i]) {
-			switch (gStageArray[n][i]) {
-			case '2': case '0': case '1': ++x; break;
-			case 'p': mPlayer = new Player(x, y, mField); ++x; break;
-			case 'b': mEnemies[mEnemyNumber] = new Enemy::Bird(x, y, mEnemyNumber, mField);
-				++mEnemyNumber; ++x; break;
-			case 't': mEnemies[mEnemyNumber] = new Enemy::Turtle(x, y, mEnemyNumber, mField);
-				++mEnemyNumber; ++x; break;
-			case 'l': mEnemies[mEnemyNumber] = new Enemy::Lama(x, y, mEnemyNumber, mField);
-				++mEnemyNumber; ++x; break;
-			case 'r': mEnemies[mEnemyNumber] = new Enemy::Bear(x, y, mEnemyNumber, mField);
-				++mEnemyNumber; ++x; break;
-			case 'n': ++y; x = 0; break;
+		mField = new Field(50.0, 75.0, *stageFile);
+		for (int y = 0; y < gLayerNumber; y++) {
+			for (int x = 0; x < gLineNumber; x++) {
+				switch (stageFile->data()[y * (gLineNumber + 1) + x]) {
+				case 'p': mPlayer = new Player(x, y, mField); break;
+				case 'b': mEnemies[mEnemyNumber] = new Enemy::Bird(x, y, mEnemyNumber, mField);
+					++mEnemyNumber; break;
+				case 't': mEnemies[mEnemyNumber] = new Enemy::Turtle(x, y, mEnemyNumber, mField);
+					++mEnemyNumber; break;
+				case 'l': mEnemies[mEnemyNumber] = new Enemy::Lama(x, y, mEnemyNumber, mField);
+					++mEnemyNumber; break;
+				case 'r': mEnemies[mEnemyNumber] = new Enemy::Bear(x, y, mEnemyNumber, mField);
+					++mEnemyNumber; break;
+				}
 			}
-			++i;
 		}
 		mStatus = new Status(*mPlayer);
+
+		SAFE_DELETE(stageFile);
 	}
 	GameParent::~GameParent() {
 		SAFE_DELETE(mPlayer);
