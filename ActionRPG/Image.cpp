@@ -31,7 +31,7 @@ mHeight(0){
 }
 
 Image::~Image() {
-	SAFE_DELETE(mTexture);
+	Framework::instance().destroyTexture(&mTexture);
 }
 
 void Image::draw(int dstX, int dstY, int srcX, int srcY, int width, int height) const {

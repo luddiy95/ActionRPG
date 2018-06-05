@@ -41,7 +41,7 @@ namespace Game {
 
 		SAFE_DELETE(mAttack);
 
-		SAFE_DELETE(mDeck);
+		SAFE_DELETE_ARRAY(mDeck);
 		//デッキ初期化(いずれ探索シーケンスのplayerに移動)
 		mDeck = new Tarot[maxTarotNum];
 		
