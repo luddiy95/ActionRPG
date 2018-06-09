@@ -58,7 +58,7 @@ namespace Sequence {
 		f.drawDebugString(2, 21, "±¿ÎÞ³");
 		f.drawDebugString(2, 22, "¾ÂÒ²ÖÝÃÞÈ");
 
-		f.drawDebugString(1, 20 + mCursorPosition, ">");
+		f.drawDebugString(1, 21 + mCursorPosition, ">");
 	}
 
 }
