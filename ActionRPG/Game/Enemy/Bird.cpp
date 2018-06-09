@@ -152,6 +152,9 @@ namespace Game {
 		}
 		void Bird::Body::damage(int d) {
 			HP -= d;
+			if (HP < 0) {
+				HP = 0;
+			}
 		}
 		int Bird::Body::getHP() const {
 			return HP;

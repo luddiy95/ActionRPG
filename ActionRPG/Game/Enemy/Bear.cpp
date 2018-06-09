@@ -239,6 +239,9 @@ namespace Game {
 		}
 		void Bear::Body::damage(int d) {
 			HP -= d;
+			if (HP < 0) {
+				HP = 0;
+			}
 		}
 		int Bear::Body::getHP() const {
 			return HP;

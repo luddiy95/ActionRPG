@@ -165,6 +165,9 @@ namespace Game {
 		}
 		void Turtle::Body::damage(int d) {
 			HP -= d;
+			if (HP < 0) {
+				HP = 0;
+			}
 		}
 		int Turtle::Body::getHP() const {
 			return HP;

@@ -313,6 +313,9 @@ namespace Game {
 		}
 		void Lama::Body::damage(int d) {
 			HP -= d;
+			if (HP < 0) {
+				HP = 0;
+			}
 		}
 		int Lama::Body::getHP() const {
 			return HP;
