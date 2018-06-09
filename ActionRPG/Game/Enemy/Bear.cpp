@@ -422,7 +422,7 @@ namespace Game {
 			}
 
 			//熊がデリートしたからといって以下が消えるわけではない
-			if (mSensor) {
+			if (mSensor && !deleted) {
 				if (mSensor->isVanished()) {
 					SAFE_DELETE(mSensor);
 					if (!mLaser) { //mLaserがnewされてない、つまりplayerに当たらず3回センサーを発射したとき
@@ -455,7 +455,7 @@ namespace Game {
 		}
 		void Bear::drawAttack(Game::GameParent::DrawAttackTiming timing, const Field& field) const {
 			if (timing == Game::GameParent::BEFORE) {
-				if (mSensor) {
+				if (mSensor && !deleted) {
 					mSensor->draw(field);
 				}
 			}
@@ -467,7 +467,7 @@ namespace Game {
 		}
 		void Bear::attackCollision(Player* player, Field* field) {
 
-			//bodyの有無は関係ない
+			
 			if (mSensor && !mLaser) {
 				if (mSensor->isSensorOn()) {
 					if (player->mY() == mSensor->mY()) {
