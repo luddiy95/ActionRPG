@@ -54,8 +54,9 @@ namespace Sequence {
 		mImage->draw(200, 150, 0, 32 * imageYposition, 20, 32);
 
 		Framework f = Framework::instance();
-		f.drawDebugString(2, 20, "±¿ÎÞ³");
-		f.drawDebugString(2, 21, "¾ÂÒ²ÖÝÃÞÈ");
+		f.drawDebugString(2, 20, "¶ÞÝÊÞÛ³Ò²ÄÞ»Ý");
+		f.drawDebugString(2, 21, "±¿ÎÞ³");
+		f.drawDebugString(2, 22, "¾ÂÒ²ÖÝÃÞÈ");
 
 		f.drawDebugString(1, 20 + mCursorPosition, ">");
 	}
