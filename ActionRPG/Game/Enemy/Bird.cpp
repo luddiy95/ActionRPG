@@ -18,7 +18,7 @@ namespace {
 namespace Game {
 	namespace Enemy {
 		Bird::Body::Body(int x, int y, Field* field) : mx(x), my(y), mImageStatus(0), mImageStatusCount(0),
-			mMoveCount(0), mAttackCount(0), mBeamCount(0), isAttackFrame(false), HP(40){
+			mMoveCount(0), mAttackCount(0), mBeamCount(0), isAttackFrame(false), HP(60){
 			SAFE_DELETE(mImage);
 			mImage = new Image("data/image/birdBody.dds");
 			field->setCharactor(x, y, Field::Trout::ENEMY_BIRD);
