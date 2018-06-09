@@ -13,6 +13,8 @@ namespace Sequence {
 		void draw() const;
 	private:
 		Image * mImage;
+		int drawCount;
+		int imageYposition;
 		int mCursorPosition;
 		int cursorCount;
 	};

@@ -13,6 +13,8 @@ namespace Sequence {
 		const char* getStagedata() const;
 	private:
 		Image * mImage;
+		int drawCount;
+		int imageYposition;
 		int cursorCount;
 		int mCursorPosition;
 		char* mStagedata;

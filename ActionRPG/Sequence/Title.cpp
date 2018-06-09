@@ -7,9 +7,10 @@
 using namespace GameLib;
 
 namespace Sequence {
-	Title::Title() : cursorCount(0), mCursorPosition(0), mImage(0) {
+	Title::Title() : cursorCount(0), mCursorPosition(0), mImage(0), drawCount(0),
+		imageYposition(0){
 		SAFE_DELETE(mImage);
-		mImage = new Image("data/image/background1.dds");
+		mImage = new Image("data/image/player1.dds");
 	}
 	Title::~Title() {
 		SAFE_DELETE(mImage);
@@ -41,7 +42,16 @@ namespace Sequence {
 			}
 		}
 
-		mImage->draw(0, 0, 0, 0);
+		switch (drawCount) {
+		case 0: imageYposition = 0; break;
+		case 30: imageYposition = 1; break;
+		case 60: imageYposition = 3; break;
+		case 90: imageYposition = 2; break;
+		case 119: drawCount = -1; break;
+		}
+		++drawCount;
+
+		mImage->draw(200, 150, 0, 32 * imageYposition, 20, 32);
 
 		Framework f = Framework::instance();
 		f.drawDebugString(2, 20, "±¿ÎÞ³");

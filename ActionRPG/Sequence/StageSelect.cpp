@@ -6,9 +6,10 @@
 using namespace GameLib;
 
 namespace Sequence {
-	StageSelect::StageSelect() : cursorCount(0), mCursorPosition(0), mImage(0), mStagedata(0) {
+	StageSelect::StageSelect() : cursorCount(0), mCursorPosition(0), mImage(0), mStagedata(0),
+		drawCount(0), imageYposition(0){
 		SAFE_DELETE(mImage);
-		mImage = new Image("data/image/background1.dds");
+		mImage = new Image("data/image/player1.dds");
 	}
 	StageSelect::~StageSelect() {
 		SAFE_DELETE(mImage);
@@ -53,7 +54,17 @@ namespace Sequence {
 			parent->moveTo(Parent::NEXT_TITLE);
 		}
 
-		mImage->draw(0, 0, 0, 0, 320, 240);
+		switch (drawCount) {
+		case 0: imageYposition = 0; break;
+		case 30: imageYposition = 1; break;
+		case 60: imageYposition = 3; break;
+		case 90: imageYposition = 2; break;
+		case 119: drawCount = -1; break;
+		}
+		++drawCount;
+
+		mImage->draw(200, 150, 0, 32 * imageYposition, 20, 32);
+
 
 		Framework f = Framework::instance();
 		f.drawDebugString(2, 20, "[½Ã°¼Þ¾Ú¸Ä]");
